@@ -38,9 +38,6 @@ extern void forceParams(TMario *player, bool isMario);
 // Yoshi
 extern void adjustYoshiTounge(TMario *player, bool isMario);
 
-// Characters
-extern void initCharacterArchives(TMarDirector *director);
-
 static void initModule() {
     // Register callbacks
     initializeSettings(gSettingsGroup);
@@ -62,7 +59,6 @@ static void initModule() {
 
     BetterSMS::Stage::registerInitCallback("Sunburn_YoshiFlagFix", enableYoshiAfterBowserDefeat);
     BetterSMS::Stage::registerInitCallback("Sunburn_NokiBayFix", enableNokiBayEveryWhere);
-    BetterSMS::Stage::registerInitCallback("Sunburn_CharacterInit", initCharacterArchives);
     BetterSMS::Stage::registerUpdateCallback("Sunburn_NewGamePlusUnlocker",
                                              checkFor120ShinesCollected);
     BetterSMS::Player::registerUpdateCallback("Sunburn_NewGamePlusParams", forceParams);
@@ -73,7 +69,6 @@ static void deinitModule() {
     // Cleanup callbacks
     BetterSMS::Stage::deregisterInitCallback("Sunburn_YoshiFlagFix");
     BetterSMS::Stage::deregisterInitCallback("Sunburn_NokiBayFix");
-    BetterSMS::Stage::deregisterInitCallback("Sunburn_CharacterInit");
     BetterSMS::Stage::deregisterUpdateCallback("Sunburn_NewGamePlusUnlocker");
     BetterSMS::Player::deregisterUpdateCallback("Sunburn_NewGamePlusParams");
     BetterSMS::Player::deregisterUpdateCallback("Sunburn_AdjustYoshiTongue");
