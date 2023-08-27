@@ -25,6 +25,13 @@ BETTER_SMS_FOR_CALLBACK void enableNokiBayEveryWhere(TMarDirector *director) {
     TFlagManager::smInstance->setBool(true, 0x50004);
 }
 
+static bool enableModelGatesAfterBowserDefeat(bool gate_unlocked) {
+    const bool is_bowser_defeated = TFlagManager::smInstance->getBool(0x10077);
+    return gate_unlocked || is_bowser_defeated;
+}
+SMS_PATCH_BL(SMS_PORT_REGION(0x801EC858, 0, 0, 0), enableModelGatesAfterBowserDefeat);
+SMS_WRITE_32(SMS_PORT_REGION(0x801EC85C, 0, 0, 0), 0x28030001);
+
 static u8 handleProgressionType(u8 area) {
     const bool is_corona_visited = TFlagManager::smInstance->getBool(0x103AE);
     if (is_corona_visited)

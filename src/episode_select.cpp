@@ -11,7 +11,10 @@ static void setStageOnExit(TGameSequence *gpSequence, s8 stage, s8 episode,
     TMarioGamePad *gpGamePad = gpApplication.mGamePads[0];
 
     if (gpGamePad->mButtons.mInput & TMarioGamePad::EButtons::Z) {
-        stage   = gpApplication.mCurrentScene.mAreaID;
+        if (SMS_isExMap__Fv() || gpApplication.mPrevScene.mAreaID != 1)  // Delfino Plaza
+            stage = gpApplication.mPrevScene.mAreaID;
+        else
+            stage = gpApplication.mCurrentScene.mAreaID;
         episode = -1;
     }
     gpSequence->set(stage, episode, flag);
