@@ -35,7 +35,7 @@ public:
         out.write(&mGamePlusValue, 1);
     }
 
-    void getValueStr(char *dst) const override {
+    void getValueName(char *dst) const override {
         getBool() ? strncpy(dst, "ON", 3) : strncpy(dst, "OFF", 4);
     }
 
@@ -72,7 +72,7 @@ public:
 
     ~WinConditionFlag() override {}
 
-    void getValueStr(char *dst) const override {
+    void getValueName(char *dst) const override {
         getInt() == 0 ? strncpy(dst, "70 Shines", 10) : strncpy(dst, "All Shadow Mario", 17);
     }
 

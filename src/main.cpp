@@ -17,6 +17,7 @@
 #include <BetterSMS/player.hxx>
 #include <BetterSMS/stage.hxx>
 
+#include "coop.hxx"
 #include "settings.hxx"
 
 extern Settings::SettingsGroup gSettingsGroup;
